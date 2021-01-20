@@ -1,9 +1,7 @@
-const express = require('express');
+import { app } from "./app";
 
-const app = express();
+const port = process.env.PORT || 8000;
 
-app.get('/', (req: any, res: any) => res.send('Express + TypeScript Server'));
-app.listen(8000, () => {
-  // eslint-disable-next-line no-console
-  console.log(`⚡️[server]: Server is running at https://localhost:${8000}`);
-});
+app.listen(port, () =>
+  console.log(`Example app listening at http://localhost:${port}`)
+);
