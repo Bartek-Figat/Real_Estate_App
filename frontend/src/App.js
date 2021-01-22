@@ -1,25 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
+import { useQuery } from 'react-query';
+import { fetchSampleData } from './api/api';
 
-function App() {
+export const App = () => {
+  const { isLoading, error, data, isFetching } = useQuery('samplePosts', fetchSampleData);
+  console.log(data);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Real Estate App</h1>
     </div>
   );
-}
+};
 
 export default App;
