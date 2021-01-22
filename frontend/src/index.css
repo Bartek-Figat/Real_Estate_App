@@ -2,20 +2,16 @@
   /* variables here */
 }
 
-/* BASIC CSS RESET - slightly modified version of below */
-/* https://dev.to/hankchizljaw/a-modern-css-reset-6p3 */
 html {
   font-size: 62.5%;
 }
 
-/* Box sizing rules */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
-/* Remove default margin */
 body,
 h1,
 h2,
@@ -35,7 +31,6 @@ dd {
   margin: 0;
 }
 
-/* Set core body defaults */
 body {
   min-height: 100vh;
   scroll-behavior: smooth;
@@ -43,18 +38,15 @@ body {
   line-height: 1.5;
 }
 
-/* A elements that don't have a class get default styles */
 a:not([class]) {
   text-decoration-skip-ink: auto;
 }
 
-/* Make images easier to work with */
 img {
   max-width: 100%;
   display: block;
 }
 
-/* Inherit fonts for inputs and buttons */
 input,
 button,
 textarea,
@@ -62,7 +54,6 @@ select {
   font: inherit;
 }
 
-/* GLOBAL STYLES */
 .sr-only {
   position: absolute;
   width: 1px;

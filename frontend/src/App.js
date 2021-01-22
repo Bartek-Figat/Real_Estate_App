@@ -1,5 +1,5 @@
 import { useQuery } from 'react-query';
-import { fetchSampleData } from './api/api';
+import { fetchSampleData } from './connectors/auth';
 
 export const App = () => {
   const { isLoading, error, data, isFetching } = useQuery('samplePosts', fetchSampleData);
