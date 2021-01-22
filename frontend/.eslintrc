@@ -6,9 +6,8 @@
       "endOfLine":"auto"
     }],
     "no-unused-vars": "warn",
-    "no-console": "off",
+    "no-console": "warn",
     "func-names": "off",
-    "no-process-exit": "off",
     "object-shorthand": "off",
     "react/react-in-jsx-scope": "off",
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
