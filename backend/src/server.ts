@@ -1,5 +1,5 @@
 import initialize from './app';
-import logger from '../util/winston.createLogger'
+import logger from './util/winston.createLogger'
 
 const port = process.env.PORT || 8000;
 
