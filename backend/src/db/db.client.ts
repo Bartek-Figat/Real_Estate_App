@@ -1,27 +1,19 @@
 require("dotenv").config();
 const { MongoClient } = require("mongodb");
 import logger from '../util/winston.createLogger'
+import { dbOptionsType, ProcessEnv } from './dbOptionsType';
 
+const { dbURI } =  process.env as ProcessEnv
 
-const { dbURI } =  process.env as {
-    [key: string]: string;
-  };
-
-
-
-interface dbOptionsType {
-    useUnifiedTopology: boolean;
-    useNewUrlParser: boolean;
-}
 
 const dbOptions: dbOptionsType = {
   useUnifiedTopology: true,
   useNewUrlParser: true,
 };
 
-const client = new MongoClient(dbURI, dbOptions);
+const client: any = new MongoClient(dbURI, dbOptions);
 
-module.exports = async (): Promise<any> => {
+export = async (): Promise<void> => {
  try {
     await client.connect();
     await client.db("admin").command({ ping: 1 });
