@@ -1,5 +1,11 @@
 :root {
-  /* variables here */
+  --color-white: #fff;
+  --color-black: #000;
+  --color-light-grey: #f6f6f6;
+  --color-dark: #191919;
+
+  --color-primary: #0000ff;
+  --color-primary-dark: #0000cc;
 }
 
 html {
@@ -35,7 +41,21 @@ body {
   min-height: 100vh;
   scroll-behavior: smooth;
   text-rendering: optimizeLegibility;
+  font-family: 'Roboto', sans-serif;
   line-height: 1.5;
+  font-size: 1.5rem;
+  background-color: var(--color-light-grey);
+  color: var(--color-dark);
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--color-primary-dark);
+  text-decoration: underline;
 }
 
 a:not([class]) {
@@ -52,6 +72,17 @@ button,
 textarea,
 select {
   font: inherit;
+}
+
+/* sticky footer */
+.site-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex-grow: 1;
 }
 
 .sr-only {
