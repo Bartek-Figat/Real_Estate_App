@@ -5,6 +5,8 @@ import compression from 'compression';
 import helmet from 'helmet';
 import swaggerUi from 'swagger-ui-express';
 
+import { RegisterRoutes } from '../build/routes';
+
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 100, // limit each IP to 100 requests per windowMs
@@ -19,6 +21,7 @@ const initialize = () => {
   app.use(helmet());
   app.use(limiter);
   app.enable('trust proxy');
+  RegisterRoutes(app);
   return app;
 };
 

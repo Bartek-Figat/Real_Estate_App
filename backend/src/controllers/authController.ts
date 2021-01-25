@@ -8,7 +8,6 @@ export interface UserCreationParams {
   email: string;
 }
 
-
 @Route('auth')
 @SuccessResponse("201", ResponseMessage.Created) 
 export class AuthController extends Controller {
