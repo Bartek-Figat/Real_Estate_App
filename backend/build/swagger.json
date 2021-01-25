@@ -6,7 +6,7 @@
 		"requestBodies": {},
 		"responses": {},
 		"schemas": {
-			"UserParams": {
+			"UserCreationParams": {
 				"properties": {
 					"password": {
 						"type": "string"
@@ -38,7 +38,7 @@
 	},
 	"openapi": "3.0.0",
 	"paths": {
-		"/user/login": {
+		"/auth/register": {
 			"post": {
 				"operationId": "CreateUser",
 				"responses": {
@@ -53,7 +53,7 @@
 					"content": {
 						"application/json": {
 							"schema": {
-								"$ref": "#/components/schemas/UserParams"
+								"$ref": "#/components/schemas/UserCreationParams"
 							}
 						}
 					}

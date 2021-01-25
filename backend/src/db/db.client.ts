@@ -31,5 +31,5 @@ export const getDb = (): Db => {
     return db
   }
 
-  throw Error('No database found')
+  throw new Error('No database found')
 }

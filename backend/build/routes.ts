@@ -3,13 +3,13 @@
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 import { Controller, ValidationService, FieldErrors, ValidateError, TsoaRoute, HttpStatusCodeLiteral, TsoaResponse } from '@tsoa/runtime';
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-import { UsersLoginController } from './../src/controllers/Controller';
+import { AuthController } from './../src/controllers/authController';
 import * as express from 'express';
 
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 
 const models: TsoaRoute.Models = {
-    "UserParams": {
+    "UserCreationParams": {
         "dataType": "refObject",
         "properties": {
             "password": {"dataType":"string","required":true},
@@ -28,10 +28,10 @@ export function RegisterRoutes(app: express.Router) {
     //  NOTE: If you do not see routes for all of your controllers in this file, then you might not have informed tsoa of where to look
     //      Please look into the "controllerPathGlobs" config option described in the readme: https://github.com/lukeautry/tsoa
     // ###########################################################################################################
-        app.post('/user/login',
+        app.post('/auth/register',
             function (request: any, response: any, next: any) {
             const args = {
-                    requestBody: {"in":"body","name":"requestBody","required":true,"ref":"UserParams"},
+                    requestBody: {"in":"body","name":"requestBody","required":true,"ref":"UserCreationParams"},
             };
 
             // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
@@ -43,7 +43,7 @@ export function RegisterRoutes(app: express.Router) {
                 return next(err);
             }
 
-            const controller = new UsersLoginController();
+            const controller = new AuthController();
 
 
             const promise = controller.createUser.apply(controller, validatedArgs as any);
