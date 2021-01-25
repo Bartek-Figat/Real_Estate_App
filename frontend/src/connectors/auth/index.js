@@ -1,5 +1,3 @@
-import axios from 'axios';
+import { service } from '../../config/axios/axiosConfig';
 
-axios.defaults.baseURL = 'https://jsonplaceholder.typicode.com';
-
-export const fetchSampleData = async () => axios.get('/posts');
+export const fetchSampleData = async () => service({ requiresAuth: false }).get('/posts');
