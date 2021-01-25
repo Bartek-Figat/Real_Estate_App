@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter } from 'react-router-dom';
 
-function App() {
+import { useQuery } from 'react-query';
+import { fetchSampleData } from './connectors/auth';
+import { Routing } from './config/routing/Routing';
+
+import 'bootstrap-grid-only-css/dist/css/bootstrap-grid.min.css';
+
+export const App = () => {
+  const { isLoading, error, data, isFetching } = useQuery('samplePosts', fetchSampleData);
+  console.log(data);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routing />
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
