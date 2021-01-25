@@ -17,8 +17,8 @@ const client: MongoClient = new MongoClient(dbURI, dbOptions);
 
 export const mongoConnect =  async (): Promise<void> => {
   try {
-    db = await client.db('test')
     await client.connect();
+    db = await client.db('test')
     await client.db('admin').command({ ping: 1 });
     logger.info(`DB connection`, { message: `Connected successfully to Client DB` });
   } finally {
