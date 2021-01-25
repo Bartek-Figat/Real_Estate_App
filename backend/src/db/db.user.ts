@@ -1,5 +1,5 @@
 require('dotenv').config();
-import { MongoClient, Collection } from 'mongodb';
+import { MongoClient } from 'mongodb';
 import { dbOptionsType, ProcessEnv } from './dbOptionsType';
 
 const { dbURI } = process.env as ProcessEnv;
@@ -7,89 +7,117 @@ const { dbURI } = process.env as ProcessEnv;
 const dbOptions: dbOptionsType = {
   useUnifiedTopology: true,
   useNewdbURIParser: true,
+  useNewUrlParser: true,
 };
 
-class DB {
-  static async getConnection(dbURI: string, dbOptions: dbOptionsType) {
-    const client = new MongoClient(dbURI, dbOptions);
-    try {
-      await client.connect();
-      const database = client.db('users');
-
-      const collection = database.collection('profile');
-      return { collection, client };
-    } catch (e) {
-      console.error(e);
-    }
+const insertOne = async (doc: any) => {
+  const client = new MongoClient(dbURI, dbOptions);
+  try {
+    await client.connect();
+    const database = client.db('test');
+    const collection = database.collection('new_collection');
+    return await collection.insertOne(doc);
+  } catch (error) {
+    console.log(error);
+  } finally {
+    await client.close();
   }
-}
+};
 
-class Methods {
-  static async insertOneDoc(doc: any) {
-    const { collection, client } = await DB.getConnection(dbURI, dbOptions);
-    try {
-      return await collection.insertOne(doc);
-    } catch (e) {
-      console.error(`Insert One Document in collection profile failure: ${e}`);
-    } finally {
-      await client.close();
-    }
+const insertMany = async (docs: any) => {
+  const client = new MongoClient(dbURI, dbOptions);
+  try {
+    await client.connect();
+    const database = client.db('test');
+    const collection = database.collection('new_collection');
+    return await collection.insertMany(docs);
+  } catch (error) {
+    console.log(error);
+  } finally {
+    await client.close();
   }
+};
 
-  static async insertManyDoc(doc: any) {
-    const { collection, client } = await DB.getConnection(dbURI, dbOptions);
-    try {
-      return await collection.insertMany(doc);
-    } catch (e) {
-      console.error(`Insert Many Document in collection profile failure: ${e}`);
-    } finally {
-      await client.close();
-    }
+const findOne = async (query: any) => {
+  const client = new MongoClient(dbURI, dbOptions);
+  try {
+    await client.connect();
+    const database = client.db('test');
+    const collection = database.collection('new_collection');
+    return await collection.findOne(query);
+  } catch (error) {
+    console.log(error);
+  } finally {
+    await client.close();
   }
+};
 
-  static async findOneDoc(doc: any) {
-    const { collection, client } = await DB.getConnection(dbURI, dbOptions);
-    try {
-      return await collection.findOne(doc);
-    } catch (e) {
-      console.error(`Find One  Document in collection profile failure: ${e}`);
-    } finally {
-      await client.close();
-    }
+const find = async (query: any, options: any) => {
+  const client = new MongoClient(dbURI, dbOptions);
+  try {
+    await client.connect();
+    const database = client.db('test');
+    const collection = database.collection('new_collection');
+    return collection.find(query, options).toArray();
+  } catch (error) {
+    console.log(error);
   }
+};
 
-  static async findAllDoc(doc: any) {
-    const { collection, client } = await DB.getConnection(dbURI, dbOptions);
-    try {
-      return await collection.find(doc).toArray();
-    } catch (e) {
-      console.error(`Find All Document in collection profile failure: ${e}`);
-    } finally {
-      await client.close();
-    }
+const findOneAndUpdate = async (filter: any, options: any, updateDoc: any) => {
+  const client = new MongoClient(dbURI, dbOptions);
+  try {
+    await client.connect();
+    const database = client.db('test');
+    const collection = database.collection('new_collection');
+    return await collection.findOneAndUpdate(filter, options, updateDoc);
+  } catch (error) {
+    console.log(error);
+  } finally {
+    await client.close();
   }
+};
 
-  static async findOneDocAndUpdate(filter: any, updateDoc: any) {
-    const { collection, client } = await DB.getConnection(dbURI, dbOptions);
-    try {
-      return await collection.findOneAndUpdate(filter, updateDoc);
-    } catch (e) {
-      console.error(`Find All Document in collection profile failure: ${e}`);
-    } finally {
-      await client.close();
-    }
+const updateOne = async (filter: any, updateDoc: any) => {
+  const client = new MongoClient(dbURI, dbOptions);
+  try {
+    await client.connect();
+    const database = client.db('test');
+    const collection = database.collection('new_collection');
+    return await collection.updateOne(filter, updateDoc);
+  } catch (error) {
+    console.log(error);
+  } finally {
+    await client.close();
   }
+};
 
-  static async deletOneDoc(query: any) {
-    const { collection, client } = await DB.getConnection(dbURI, dbOptions);
-    try {
-      return await collection.deleteOne(query);
-    } catch (e) {
-      console.error(`Find All Document in collection profile failure: ${e}`);
-    } finally {
-      await client.close();
-    }
+const deleteOne = async (quer: any) => {
+  const client = new MongoClient(dbURI, dbOptions);
+  try {
+    await client.connect();
+    const database = client.db('test');
+    const collection = database.collection('new_collection');
+    return await collection.deleteOne(quer);
+  } catch (error) {
+    console.log(error);
+  } finally {
+    await client.close();
   }
-}
+};
 
-export { Methods };
+const deleteMany = async (query: any) => {
+  const client = new MongoClient(dbURI, dbOptions);
+  try {
+    await client.connect();
+    const database = client.db('test');
+    const collection = database.collection('new_collection');
+    return await collection.deleteMany(query);
+  } catch (error) {
+    console.log(error);
+  } finally {
+    await client.close();
+  }
+};
+
+export { insertOne, insertMany, findOne, find, findOneAndUpdate, updateOne, deleteOne, deleteMany };

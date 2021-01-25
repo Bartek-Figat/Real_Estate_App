@@ -8,6 +8,7 @@ const { dbURI } = process.env as ProcessEnv;
 const dbOptions: dbOptionsType = {
   useUnifiedTopology: true,
   useNewdbURIParser: true,
+  useNewUrlParser: true,
 };
 
 const client: any = new MongoClient(dbURI, dbOptions);
