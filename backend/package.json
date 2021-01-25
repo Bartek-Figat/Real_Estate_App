@@ -4,13 +4,16 @@
   "description": "Real Estate App",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.ts",
-    "dev": "node server.ts",
+    "start": "nodemon  --exec ts-node src/server.ts",
+    "dev": "node src/server.ts",
+    "dev:tsoa": "concurrently \"nodemon\" \"nodemon -x tsoa spec-and-routes\"",
     "build": "tsc --project ./",
     "tsc": "tsc",
     "git": "git add . && git commit -m",
     "check:packages": "ncu",
-    "upgrade:packages": "ncu -u"
+    "upgrade:packages": "ncu -u",
+    "build:tsoa": "tsoa spec-and-routes && tsc",
+    "start:tsoa": "nodemon server.js"
   },
   "husky": {
     "hooks": {}
@@ -23,7 +26,10 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-rate-limit": "^5.2.3",
+    "firebase-admin": "^9.4.2",
     "helmet": "^4.4.1",
+    "mongodb": "^3.6.3",
+    "tsoa": "^3.5.1",
     "winston": "^3.3.3"
   },
   "devDependencies": {
@@ -31,8 +37,11 @@
     "@types/cors": "^2.8.9",
     "@types/express": "^4.17.11",
     "@types/express-rate-limit": "^5.1.1",
+    "@types/mongodb": "^3.6.3",
     "@types/node": "^14.14.22",
+    "@types/swagger-ui-express": "^4.1.2",
     "@typescript-eslint/eslint-plugin": "^4.14.0",
+    "concurrently": "^5.3.0",
     "eslint": "^7.18.0",
     "eslint-config-airbnb-typescript": "^12.0.0",
     "eslint-config-airbnb-typescript-prettier": "^4.1.0",
@@ -43,6 +52,7 @@
     "nodemon": "^2.0.7",
     "npm-check-updates": "^11.0.0",
     "prettier": "^2.2.1",
+    "swagger-ui-express": "^4.1.6",
     "ts-node": "^9.1.1",
     "typescript": "^4.1.3"
   }
