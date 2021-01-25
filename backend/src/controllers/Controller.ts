@@ -23,7 +23,6 @@ export class UsersService {
 
 @Route('user')
 export class UsersLoginController extends Controller {
-  @SuccessResponse('201', 'Created') //
   @Post('/login')
   public async createUser(@Body() requestBody: UserParams): Promise<void> {
     this.setStatus(201); // set return status 201

@@ -4,7 +4,6 @@ import rateLimit from 'express-rate-limit';
 import compression from 'compression';
 import helmet from 'helmet';
 import swaggerUi from 'swagger-ui-express';
-import { RegisterRoutes } from '../build/routes';
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
@@ -19,10 +18,6 @@ const initialize = () => {
   app.use(cors());
   app.use(helmet());
   app.use(limiter);
-  app.use('/docs', swaggerUi.serve, async (_req: ExRequest, res: ExResponse) => {
-    return res.send(swaggerUi.generateHTML(await import('../build/swagger.json')));
-  });
-  RegisterRoutes(app);
   app.enable('trust proxy');
   return app;
 };
