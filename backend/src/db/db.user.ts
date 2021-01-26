@@ -6,7 +6,6 @@ const { dbURI } = process.env as ProcessEnv;
 
 const dbOptions: dbOptionsType = {
   useUnifiedTopology: true,
-  useNewdbURIParser: true,
   useNewUrlParser: true,
 };
 
@@ -52,13 +51,13 @@ const findOne = async (query: any) => {
   }
 };
 
-const find = async (query: any, options: any) => {
+const find = async (query: any) => {
   const client = new MongoClient(dbURI, dbOptions);
   try {
     await client.connect();
     const database = client.db('test');
     const collection = database.collection('new_collection');
-    return collection.find(query, options).toArray();
+    return collection.find(query).toArray();
   } catch (error) {
     console.log(error);
   }
@@ -118,6 +117,11 @@ const deleteMany = async (query: any) => {
   } finally {
     await client.close();
   }
+};
+
+export const get = async () => {
+  const res = await find({});
+  console.log(res);
 };
 
 export { insertOne, insertMany, findOne, find, findOneAndUpdate, updateOne, deleteOne, deleteMany };
