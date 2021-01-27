@@ -8,12 +8,12 @@
 		"schemas": {
 			"UserParams": {
 				"properties": {
-					"useremail": {
+					"email": {
 						"type": "string"
 					}
 				},
 				"required": [
-					"useremail"
+					"email"
 				],
 				"type": "object",
 				"additionalProperties": false
@@ -34,12 +34,12 @@
 	},
 	"openapi": "3.0.0",
 	"paths": {
-		"/user/login": {
+		"/users": {
 			"post": {
-				"operationId": "GetUsers",
+				"operationId": "CreateUser",
 				"responses": {
-					"204": {
-						"description": "No content"
+					"201": {
+						"description": "Created"
 					}
 				},
 				"security": [],

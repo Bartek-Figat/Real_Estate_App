@@ -5,9 +5,6 @@ import compression from 'compression';
 import helmet from 'helmet';
 import swaggerUi from 'swagger-ui-express';
 import { RegisterRoutes } from '../build/routes';
-import { get } from '../src/db/db.user';
-
-// get();
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
