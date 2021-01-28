@@ -13,7 +13,6 @@ export interface UserCreationParams {
 export class AuthController extends Controller {
   @Post('/register')
   public async createUser(@Body() requestBody: UserCreationParams): Promise<void> {
-    console.log('ok')
     new UserService().createUser(requestBody.password, requestBody.email);
   }
 }

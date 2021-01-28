@@ -11,7 +11,7 @@ export class UserRepository {
     await this.db.collection(Collection.Users).insertOne(user);
   }
 
-  public async findOne(user: User): Promise<User | undefined> {
+  public async findOne(user: User): Promise<any> {
     return await this.db.collection(Collection.Users).findOne(user) as User | undefined;
   }
 }

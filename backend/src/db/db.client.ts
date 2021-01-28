@@ -22,9 +22,10 @@ export const mongoConnect =  async (): Promise<void> => {
     await client.db('admin').command({ ping: 1 });
     logger.info(`DB connection`, { message: `Connected successfully to Client DB` });
   } finally {
-    await client.close();
+    // client.close()
   }
 };
+
 
 export const getDb = (): Db => {
   if (db) {

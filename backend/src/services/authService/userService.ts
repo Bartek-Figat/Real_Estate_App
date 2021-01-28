@@ -14,7 +14,7 @@ export class UserService {
     const existingUser: User | undefined = await this.userRepository.findOne(user)
 
     if(existingUser) {
-      throw new Error(ErrorMessage.UserAlredyExists);
+      return 
     }
     
     const salt = await bcrypt.genSalt(10);
