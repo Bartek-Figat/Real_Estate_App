@@ -1,0 +1,88 @@
+{
+	"components": {
+		"examples": {},
+		"headers": {},
+		"parameters": {},
+		"requestBodies": {},
+		"responses": {},
+		"schemas": {
+			"PropertyCreationParams": {
+				"properties": {
+					"title": {
+						"type": "string"
+					},
+					"price": {
+						"type": "number",
+						"format": "double"
+					},
+					"location": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"bedrooms": {
+						"type": "number",
+						"format": "double"
+					},
+					"bathrooms": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"title",
+					"price",
+					"location",
+					"description",
+					"bedrooms",
+					"bathrooms"
+				],
+				"type": "object",
+				"additionalProperties": false
+			}
+		},
+		"securitySchemes": {}
+	},
+	"info": {
+		"title": "real-e",
+		"version": "1.0.0",
+		"description": "Real Estate App",
+		"license": {
+			"name": "ISC"
+		},
+		"contact": {
+			"name": "Team"
+		}
+	},
+	"openapi": "3.0.0",
+	"paths": {
+		"/property/add-property": {
+			"post": {
+				"operationId": "CreateProperty",
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/PropertyCreationParams"
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"servers": [
+		{
+			"url": "/"
+		}
+	]
+}
