@@ -55,11 +55,11 @@ export class Method {
     const { email, password } = doc;
     const collection: any = await DB.getConnection(dbURI, dbOptions);
     const existingUser = await collection.findOne(email);
-    if (existingUser === null) {
+    const match = existingUser && (await compare(password, existingUser.password));
+    if (!match) {
       return;
     }
 
-    await compare(password, existingUser.password);
     return {
       accessToken: sign(
         {
