@@ -6,3 +6,7 @@ export interface dbOptionsType {
 export interface ProcessEnv {
   [key: string]: string;
 }
+
+export interface CollectionName {
+  [key: string]: string;
+}

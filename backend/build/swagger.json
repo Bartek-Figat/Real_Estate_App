@@ -10,10 +10,14 @@
 				"properties": {
 					"email": {
 						"type": "string"
+					},
+					"password": {
+						"type": "string"
 					}
 				},
 				"required": [
-					"email"
+					"email",
+					"password"
 				],
 				"type": "object",
 				"additionalProperties": false
@@ -36,7 +40,7 @@
 	"paths": {
 		"/users": {
 			"post": {
-				"operationId": "CreateUser",
+				"operationId": "LoginUser",
 				"responses": {
 					"201": {
 						"description": "Created"

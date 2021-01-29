@@ -13,6 +13,7 @@ const models: TsoaRoute.Models = {
         "dataType": "refObject",
         "properties": {
             "email": {"dataType":"string","required":true},
+            "password": {"dataType":"string","required":true},
         },
         "additionalProperties": false,
     },
@@ -45,7 +46,7 @@ export function RegisterRoutes(app: express.Router) {
             const controller = new UsersController();
 
 
-            const promise = controller.createUser.apply(controller, validatedArgs as any);
+            const promise = controller.loginUser.apply(controller, validatedArgs as any);
             promiseHandler(controller, promise, response, undefined, next);
         });
         // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
