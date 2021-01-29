@@ -59,7 +59,7 @@ export class Method {
       return;
     }
 
-    await compare(doc.password, password);
+    await compare(password, existingUser.password);
     return {
       accessToken: sign(
         {
