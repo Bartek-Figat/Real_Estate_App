@@ -1,7 +1,7 @@
 import { config } from 'dotenv';
 import { Db, MongoClient } from 'mongodb';
-import { Collection, Client } from '../enums/collection.enum';
-import logger from '../util/winston.createLogger';
+import { Collection, Client } from 'enums/collection.enum';
+import logger from 'util/winston.createLogger';
 import { dbOptionsType, ProcessEnv } from './dbOptionsType';
 
 config();

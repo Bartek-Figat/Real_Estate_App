@@ -1,8 +1,8 @@
 import { config } from 'dotenv';
 import { sign } from 'jsonwebtoken';
 import { compare } from 'bcrypt';
-import { dbOptionsType, ProcessEnv } from '../../db/dbOptionsType';
-import { DB } from '../../db/db.client';
+import { dbOptionsType, ProcessEnv } from 'db/dbOptionsType';
+import { DB } from 'db/db.client';
 
 config();
 const { dbURI, secret } = process.env as ProcessEnv;
