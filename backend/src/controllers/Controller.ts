@@ -1,6 +1,6 @@
 import { Body, Controller, Post, Route, SuccessResponse } from 'tsoa';
 
-import { Method } from '../db/db.client';
+import { Method } from '../services/authService/userService';
 
 export interface UserParams {
   email: string;

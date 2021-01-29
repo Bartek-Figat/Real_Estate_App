@@ -1,13 +1,11 @@
 import { config } from 'dotenv';
 import { Db, MongoClient } from 'mongodb';
-import { sign } from 'jsonwebtoken';
-import { compare } from 'bcrypt';
 import { Collection, Client } from '../enums/collection.enum';
 import logger from '../util/winston.createLogger';
 import { dbOptionsType, ProcessEnv } from './dbOptionsType';
 
 config();
-const { dbURI, secret } = process.env as ProcessEnv;
+const { dbURI } = process.env as ProcessEnv;
 
 const dbOptions: dbOptionsType = {
   useUnifiedTopology: true,
@@ -36,7 +34,7 @@ export const getDb = (): Db => {
   throw new Error('No database found');
 };
 
-class DB {
+export class DB {
   static async getConnection(dbURI: string, dbOptions: dbOptionsType) {
     const client = new MongoClient(dbURI, dbOptions);
     try {
@@ -47,28 +45,5 @@ class DB {
     } catch (e) {
       logger.error(`Get connection`, { message: `No connection ${e}` });
     }
-  }
-}
-
-export class Method {
-  static async findOne(doc: any) {
-    const { email, password } = doc;
-    const collection: any = await DB.getConnection(dbURI, dbOptions);
-    const existingUser = await collection.findOne(email);
-    const match = existingUser && (await compare(password, existingUser.password));
-    if (!match) {
-      return;
-    }
-
-    return {
-      accessToken: sign(
-        {
-          data: {
-            id: existingUser._id,
-          },
-        },
-        `${secret}`
-      ),
-    };
   }
 }
