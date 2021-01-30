@@ -1,6 +1,6 @@
 import { Body, Controller, Post, Route, SuccessResponse } from 'tsoa';
 
-import { Method } from 'services/authService/userService';
+import { Method } from '../services/authService/userService';
 
 export interface UserParams {
   email: string;
@@ -9,14 +9,13 @@ export interface UserParams {
 
 @Route('users')
 export class UsersController extends Controller {
-  @SuccessResponse('201', 'Created') // Custom success response
+  @SuccessResponse('201', 'Created')
   @Post()
   public async loginUser(@Body() requestBody: UserParams): Promise<void> {
     this.setStatus(201);
     const { email, password } = requestBody;
     const doc = { email, password };
-    const res = await Method.findOne(doc);
-    console.log(res);
+    await Method.findOne(doc);
     return;
   }
 }
