@@ -1,0 +1,91 @@
+.slide {
+  position: relative;
+  min-height: 70vh;
+  max-height: 75vh;
+  overflow: hidden;
+  display: flex;
+}
+
+.image {
+  object-fit: cover;
+}
+
+.slideContentWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.slideContent {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: var(--color-white);
+  font-size: 1.4rem;
+}
+
+.propertyTitle {
+  font-weight: 300;
+  font-size: 2.8rem;
+}
+
+.propertyAddress {
+  font-style: normal;
+}
+
+.propertyFeatures {
+  display: flex;
+  margin-top: 1rem;
+}
+
+.propertyFeature {
+  --property-feature-right-margin: 2rem;
+  margin-right: var(--property-feature-right-margin);
+  position: relative;
+}
+
+.propertyFeature:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: calc(0% - (var(--property-feature-right-margin) / 2));
+  height: 100%;
+  width: 1px;
+  background-color: var(--color-light-grey);
+}
+
+.propertyFeatureTitle {
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: var(--color-white);
+  opacity: 0.7;
+}
+
+.propertyButton {
+  margin-top: 2rem;
+  align-self: flex-start;
+}
+
+.propertyButton:hover {
+  text-decoration: none;
+}
+
+@media (min-width: 36em) {
+  .slideContent {
+    font-size: 1.5rem;
+  }
+
+  .propertyTitle {
+    font-size: 3.8rem;
+  }
+}
+
+@media (min-width: 62em) {
+  .propertyTitle {
+    font-size: 4.8rem;
+  }
+}

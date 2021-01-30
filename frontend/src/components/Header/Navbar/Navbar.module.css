@@ -1,0 +1,145 @@
+.navbar {
+  background-color: var(--color-white);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--navbar-height);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 0.125rem 0.3125rem rgb(0 0 0 / 10%);
+}
+
+.navbarContentWrapper {
+  width: 100%;
+}
+
+.navbarContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.heading {
+  display: flex;
+  margin-right: 2rem;
+}
+
+.navbarCollapse {
+  position: absolute;
+  top: var(--navbar-height);
+  left: 0;
+  width: 100%;
+  height: 0;
+  background-color: var(--color-white);
+  margin: 0;
+  overflow: hidden;
+  transition: 0.3s height cubic-bezier(0.5, 1.03, 0.37, 0.91);
+}
+
+.navbarCollapseOpen {
+  height: 27rem;
+  box-shadow: 0 0.125rem 0.3125rem rgb(0 0 0 / 10%);
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.navItem {
+  list-style: none;
+  margin: 0 1.5rem;
+  padding: 0;
+  text-align: center;
+  border-bottom: 1px solid rgba(25, 25, 25, 0.05);
+}
+
+.nav:last-child .navItem:nth-last-child(-n + 2) {
+  border-bottom: none;
+}
+
+.navLink {
+  display: block;
+  position: relative;
+  padding: 1rem;
+  transition: 0.3s all ease;
+  color: var(--color-secondary);
+  text-decoration: none;
+}
+
+.navLink:hover {
+  text-decoration: none;
+  background-color: rgba(25, 25, 25, 0.05);
+  color: var(--color-black);
+}
+
+.navLinkButton:hover {
+  text-decoration: none;
+}
+
+.navToggler {
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  flex-direction: column;
+  --top-bar-transform: translateY(-5px) rotate(0deg);
+  --bottom-bar-transform: translateY(5px) rotate(0deg);
+}
+
+.navTogglerOpen {
+  --top-bar-transform: translateY(3px) rotate(45deg);
+  --bottom-bar-transform: translateY(0px) rotate(-45deg);
+}
+
+.navToggler::before,
+.navToggler::after {
+  content: '';
+  display: block;
+  height: 0.3rem;
+  width: 3rem;
+  background-color: var(--color-dark);
+  transition: 0.3s all ease;
+}
+
+.navToggler::before {
+  transform: var(--top-bar-transform);
+}
+
+.navToggler::after {
+  transform: var(--bottom-bar-transform);
+}
+
+@media (min-width: 62em) {
+  .navbarCollapse {
+    position: static;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .navItem {
+    border: none;
+    margin: 0;
+  }
+
+  .navLinkButton {
+    margin-left: 2rem;
+  }
+
+  .navToggler {
+    display: none;
+  }
+}

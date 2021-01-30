@@ -1,0 +1,85 @@
+.footer {
+  margin-top: auto;
+  background-color: var(--color-white);
+  color: var(--color-translucent-black);
+  box-shadow: 0 0.23rem 1.3rem rgb(0 0 0 / 15%);
+}
+
+.mainFooter {
+  padding: 4rem 0;
+}
+
+.footerColumn:not(:last-child) {
+  margin-bottom: 3rem;
+}
+
+.logo {
+  margin-bottom: 2.5rem;
+}
+
+.text {
+  margin-bottom: 2rem;
+}
+
+.footerHeading {
+  color: var(--color-dark);
+  margin-bottom: 1rem;
+}
+
+.nav {
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.navItem {
+  list-style: none;
+  margin: 0.7rem 0;
+}
+
+.navItem:not(:last-child) {
+  margin-right: 1.5rem;
+}
+
+.navLink {
+  color: var(--color-translucent-black);
+  transition: 0.2s all ease;
+  padding: 0.5rem 0;
+}
+.navLink:hover {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.address {
+  font-style: normal;
+}
+
+.addressLabel {
+  font-weight: 700;
+}
+
+.subFooter {
+  padding: 2rem 0;
+  border-top: 0.0625rem solid var(--color-light-grey);
+  text-align: center;
+}
+
+@media (min-width: 36em) {
+  .nav {
+    flex-direction: row;
+  }
+}
+
+@media (min-width: 48em) {
+  .footerColumn {
+    margin-bottom: 0;
+  }
+  .footerHeading {
+    margin-bottom: 2.5rem;
+  }
+  .nav {
+    flex-direction: column;
+  }
+}

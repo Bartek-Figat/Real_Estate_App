@@ -1,11 +1,15 @@
 :root {
+  --navbar-height: 7.2rem;
   --color-white: #fff;
   --color-black: #000;
   --color-light-grey: #f6f6f6;
+  --color-translucent-black: rgba(0, 0, 0, 0.5);
   --color-dark: #191919;
 
   --color-primary: #0000ff;
   --color-primary-dark: #0000cc;
+  --color-secondary: #343a40;
+  --color-secondary-dark: #27292c;
 }
 
 html {
@@ -35,6 +39,15 @@ blockquote,
 dl,
 dd {
   margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 400;
 }
 
 body {
@@ -95,4 +108,13 @@ select {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+.section {
+  padding: 3.5rem 0;
+}
+
+.section-heading {
+  font-weight: 300;
+  text-align: center;
 }

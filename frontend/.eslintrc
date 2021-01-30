@@ -13,7 +13,10 @@
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "react/jsx-one-expression-per-line": "off",
     "import/extensions": [1, { "js": "never" }],
-    "import/prefer-default-export": "off"
+    "import/prefer-default-export": "off",
+    "react/prop-types": 0,
+    "react/button-has-type": 0,
+    "react/jsx-props-no-spreading": "off"
   },
   "env": {
     "browser": true
