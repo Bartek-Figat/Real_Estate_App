@@ -1,17 +1,24 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "module": "commonjs",
-    "rootDir": "./",
-    "strict": true,
-    "sourceMap": true,
-    "experimentalDecorators": true,
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "noImplicitAny": true,
-    "alwaysStrict": true,
-    "forceConsistentCasingInFileNames": true,
+      "module": "commonjs",
+      "rootDir": "./",
+      "strict": true,
+      "sourceMap": true,
+      "experimentalDecorators": true,
+      "allowJs": true,
+      "resolveJsonModule": true,
+      "esModuleInterop": true,
+      "skipLibCheck": true,
+      "noImplicitAny": true,
+      "alwaysStrict": true,
+      "forceConsistentCasingInFileNames": true,
   },
-  "files": ["../types.d.ts"]
-}
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+  "files": ["types.d.ts"]
+  }
