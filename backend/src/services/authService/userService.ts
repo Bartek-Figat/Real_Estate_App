@@ -1,10 +1,10 @@
-import { Db, ObjectID } from 'mongodb';
+import { ObjectID } from 'mongodb';
 import { config } from 'dotenv';
 import { sign } from 'jsonwebtoken';
-import { compare, genSalt, hash } from 'bcrypt';
+import { compare } from 'bcrypt';
 import { dbOptionsType, ProcessEnv } from '../../db/dbOptionsType';
-import DbClient, { DB } from '../../db/db.client';
-import { getMaxListeners } from 'process';
+import { DB } from '../../db/db.client';
+import { User } from '../../models/user';
 
 config();
 const { dbURI, secret } = process.env as ProcessEnv;
@@ -15,7 +15,7 @@ const dbOptions: dbOptionsType = {
 };
 
 export class Method {
-  static async findOne(doc: any) {
+  static async findOne(doc: User): Promise<any> {
     const { email, password } = doc;
     const collection: any = await DB.getConnection(dbURI, dbOptions);
     const existingUser = await collection.findOne({ email });

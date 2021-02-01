@@ -1,7 +1,4 @@
-export enum Collection {
+export enum Index {
   Users = 'users',
-}
-
-export enum Client {
   Db = 'test',
 }

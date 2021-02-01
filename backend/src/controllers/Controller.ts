@@ -1,5 +1,4 @@
-import { Body, Controller, Post, Route, SuccessResponse } from 'tsoa';
-
+import { Body, Controller, Get, Post, Route, Security, SuccessResponse, Request } from 'tsoa';
 import { Method } from '../services/authService/userService';
 
 export interface UserParams {
@@ -14,7 +13,10 @@ export class UsersController extends Controller {
   public async loginUser(@Body() requestBody: UserParams): Promise<void> {
     this.setStatus(201);
     const { email, password } = requestBody;
-    const doc = { email, password };
+    const doc: {
+      email: string;
+      password: string;
+    } = { email, password };
     await Method.findOne(doc);
     return;
   }
