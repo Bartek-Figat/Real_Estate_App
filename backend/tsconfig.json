@@ -12,5 +12,6 @@
     "noImplicitAny": true,
     "alwaysStrict": true,
     "forceConsistentCasingInFileNames": true,
-  }
+  },
+  "files": ["../types.d.ts"]
 }
