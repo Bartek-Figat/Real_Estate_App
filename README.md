@@ -1,5 +1,4 @@
-# Real_Estate_App
-Real estate applications
+
 
 <!-- PROJECT LOGO -->
 <br />
