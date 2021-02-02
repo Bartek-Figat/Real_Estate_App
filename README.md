@@ -15,6 +15,9 @@
 * [Built With](#built-with)
 * [Handled with](#handled-with)
 * [Contributing](#contributing)
+* [Prerequisites](#prerequisites)
+* [Installation](#installation)
+* [API](#api)
 
 
 
