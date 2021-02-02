@@ -48,3 +48,28 @@ The application also allows you to insert advertisements, types of goods, househ
 5. Open a Pull Request
 
 
+### Prerequisites
+
+* npm
+```sh
+npm install npm@latest -g
+```
+
+
+### Installation
+ 
+1. Clone the repo
+```sh
+git clone https://github.com/Bartek-Figat/Real_Estate_App.git
+```
+2. Install NPM packages
+```sh
+npm install
+```
+3. Setup database
+
+
+### API
+
+
+
