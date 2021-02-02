@@ -24,4 +24,8 @@ Aplikacja umożliwia również wstawianie reklam, rodzajów towarów, gospodarst
 * [tsoa-community.github](https://tsoa-community.github.io/docs/)
 * [react.js](https://reactjs.org/)
 
+### Handled with
+
+* [Github Projects](https://github.com/Bartek-Figat/Real_Estate_App/projects)
+
 
