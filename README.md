@@ -80,11 +80,17 @@ npm install
 app.ts               
 │
 ├── backend                 
-│   └── 
-│   └── 
+│   └── src
+|        └── controllers
+|        └── db
+|        └── models
+|        └── util
+│  
 │
 ├── frontend                 
-│   └── 
+│   └── public
+|   └── src
+|     └── 
 │
 │
 ├── .env                        # Env (The process.env property returns an object containing the user environment)
@@ -95,7 +101,7 @@ app.ts
 ├──  package.json               # Project Description & Dependencies
 │
 │
-├──  server.js                  # Index (your server starts here)
+├──  server.ts                  # Index (your server starts here)
 
 
 ```
