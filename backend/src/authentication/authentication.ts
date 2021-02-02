@@ -1,7 +1,9 @@
-import { config } from 'dotenv/types';
+import { config } from 'dotenv';
 import { Request, Response, NextFunction } from 'express';
 import { verify } from 'jsonwebtoken';
 import { ProcessEnv } from '../db/dbOptionsType';
+import { Auth } from '../enums/collection.enum';
+
 config();
 const { secret } = process.env as ProcessEnv;
 
@@ -11,16 +13,21 @@ interface IPayload {
   };
 }
 
-const protectedRoute = async (req: Request, res: Response, next: NextFunction) => {
-  const autToken = req.headers['authorization'];
-  if (!autToken) return;
-  const accessToken = autToken.split(' ')[1];
-
-  const user = verify(accessToken, `${secret}`) as IPayload;
-  if (!user) {
-    return;
+export const expressAuthentication = async (
+  req: Request,
+  securityName: string,
+  scopes?: string[]
+) => {
+  if (securityName === Auth.SecurityName) {
+    const token: any = req.headers['authorization'];
+    if (!token) {
+      return new Error('No token provided');
+    }
+    const accessToken = token.split(' ')[1];
+    const user = verify(accessToken, `${secret}`) as IPayload;
+    if (!user) {
+      return new Error('No token provided');
+    }
+    return user.data.id;
   }
-
-  req.user = user.data.id;
-  next();
 };

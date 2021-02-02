@@ -23,7 +23,13 @@
 				"additionalProperties": false
 			}
 		},
-		"securitySchemes": {}
+		"securitySchemes": {
+			"api_key": {
+				"type": "apiKey",
+				"name": "authorization",
+				"in": "headers"
+			}
+		}
 	},
 	"info": {
 		"title": "real-e",
@@ -43,7 +49,7 @@
 				"operationId": "LoginUser",
 				"responses": {
 					"201": {
-						"description": "Created"
+						"description": "User Created"
 					}
 				},
 				"security": [],
@@ -58,6 +64,27 @@
 						}
 					}
 				}
+			}
+		},
+		"/users/UserInfo": {
+			"get": {
+				"operationId": "UserInfo",
+				"responses": {
+					"201": {
+						"description": "Auth",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"authorization": []
+					}
+				],
+				"parameters": []
 			}
 		}
 	},
