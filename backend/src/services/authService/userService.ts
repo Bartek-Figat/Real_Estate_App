@@ -5,6 +5,7 @@ import { compare } from 'bcrypt';
 import { dbOptionsType, ProcessEnv } from '../../db/dbOptionsType';
 import { DB } from '../../db/db.client';
 import { User } from '../../models/user';
+import { ReqUser, Options } from '../../controllers/interface.Controller';
 
 config();
 const { dbURI, secret } = process.env as ProcessEnv;
@@ -34,5 +35,10 @@ export class Method {
         `${secret}`
       ),
     };
+  }
+  static async showUser(doc: any, options: Options): Promise<any> {
+    const userID: ObjectID = new ObjectID(doc);
+    const collection: any = await DB.getConnection(dbURI, dbOptions);
+    return await collection.findOne({ _id: userID }, options);
   }
 }

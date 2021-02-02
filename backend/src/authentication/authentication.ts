@@ -1,5 +1,5 @@
 import { config } from 'dotenv';
-import { Request, Response, NextFunction } from 'express';
+import { Request } from 'express';
 import { verify } from 'jsonwebtoken';
 import { ProcessEnv } from '../db/dbOptionsType';
 import { Auth } from '../enums/collection.enum';
@@ -26,7 +26,7 @@ export const expressAuthentication = async (
     const accessToken = token.split(' ')[1];
     const user = verify(accessToken, `${secret}`) as IPayload;
     if (!user) {
-      return new Error('No token provided');
+      return new Error('No accessToken provided');
     }
     return user.data.id;
   }

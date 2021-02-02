@@ -1,22 +1,7 @@
-import express from 'express';
-import {
-  Body,
-  Controller,
-  Get,
-  Post,
-  Route,
-  SuccessResponse,
-  Request,
-  Header,
-  Security,
-} from 'tsoa';
+import { Body, Controller, Get, Post, Route, SuccessResponse, Request, Security } from 'tsoa';
 import { Method } from '../services/authService/userService';
 import { Auth } from '../enums/collection.enum';
-
-export interface UserParams {
-  email: string;
-  password: string;
-}
+import { UserParams, ReqUser, Options } from './interface.Controller';
 
 @Route('users')
 export class UsersController extends Controller {
@@ -25,7 +10,7 @@ export class UsersController extends Controller {
   public async loginUser(@Body() requestBody: UserParams): Promise<void> {
     this.setStatus(201);
     const { email, password } = requestBody;
-    const doc = { email, password };
+    const doc: UserParams = { email, password };
     return await Method.findOne(doc);
   }
   @SuccessResponse('201', 'Auth')
@@ -33,6 +18,8 @@ export class UsersController extends Controller {
   @Get('UserInfo')
   public async userInfo(@Request() request: any): Promise<any> {
     this.setStatus(201);
-    console.log(request.user);
+    const id: ReqUser = request.user;
+    const options: Options = { projection: { _id: 0, password: 0 } };
+    return await Method.showUser(id, options);
   }
 }
