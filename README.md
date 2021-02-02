@@ -81,9 +81,9 @@ app.ts
 │
 ├── backend                 
 │   └── src
-|        └── controllers
-|        └── db
-|        └── models
+|        └── controllers       # Controllers (functions)
+|        └── db                # MongoDB is a document-oriented NoSQL database used for high volume data storage.
+|        └── models            # Data in MongoDB has a flexible schema. 
 |        └── util
 │  
 │
@@ -108,5 +108,8 @@ app.ts
 
 ### API
 
-
+| Function name | Description |
+| ------------- | ----------- |
+| `get()`       | "/"         |
+| `post()`      | "/"     |
 
