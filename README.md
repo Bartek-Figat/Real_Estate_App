@@ -12,7 +12,6 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-<h3>About the project</h3>
 This microservice is a real estate application that allows you to freely post adverts such as rentals for sale. 
 The application also allows you to insert advertisements, types of goods, household appliances, appliances and more
 
