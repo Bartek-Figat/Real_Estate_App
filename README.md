@@ -3,7 +3,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <h3 align="center">Real estate applications</h3
+  <h3 align="center">Real estate applications</h3>
 </p>
 
 <br />
@@ -11,9 +11,10 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-O projekcie
-Ta mikrousługa to aplikacja dotycząca nieruchomości, która umożliwia swobodne publikowanie ogłoszeń, takich jak wynajem na sprzedaż.
-Aplikacja umożliwia również wstawianie reklam, rodzajów towarów, gospodarstwa domowego, sprzętów i innych.
+
+<h3>About the project</h3>
+This microservice is a real estate application that allows you to freely post adverts such as rentals for sale. 
+The application also allows you to insert advertisements, types of goods, household appliances, appliances and more
 
 
 ### Built With
@@ -27,5 +28,15 @@ Aplikacja umożliwia również wstawianie reklam, rodzajów towarów, gospodarst
 ### Handled with
 
 * [Github Projects](https://github.com/Bartek-Figat/Real_Estate_App/projects)
+
+
+<!-- CONTRIBUTING -->
+## Contributing
+
+1. Clone the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
 
