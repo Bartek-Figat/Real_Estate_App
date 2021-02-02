@@ -74,5 +74,32 @@ npm install
 
 ### API
 
+### Folder Structure
+
+```javascript
+
+app.ts               
+│
+├── backend                 
+│   └── 
+│   └── 
+│
+├── frontend                 
+│   └── 
+│
+│
+├── .env                        # Env (The process.env property returns an object containing the user environment)
+│
+│
+├── .gitignore                  # Gitignore (specifies intentionally untracked files to ignore)
+│
+├──  package.json               # Project Description & Dependencies
+│
+│
+├──  server.js                  # Index (your server starts here)
+
+
+```
+
 
 
