@@ -17,7 +17,7 @@
 * [Contributing](#contributing)
 * [Prerequisites](#prerequisites)
 * [Installation](#installation)
-* [Folder Structure](#folder structure)
+* [Folder Structure](#folder-structure)
 * [API](#api)
 
 
