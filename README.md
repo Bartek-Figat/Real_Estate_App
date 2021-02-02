@@ -21,7 +21,7 @@ Aplikacja umożliwia również wstawianie reklam, rodzajów towarów, gospodarst
 * [node.js](https://nodejs.org/en/)
 * [express.js](https://expressjs.com/)
 * [mongodb nodejs driver](https://docs.mongodb.com/drivers/node/)
-* [tsoa-community](https://tsoa-community.github.io/docs/) tsoa-community)
+* [tsoa-community.github](https://tsoa-community.github.io/docs/)
 * [react.js](https://reactjs.org/)
 
 
