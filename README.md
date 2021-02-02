@@ -17,6 +17,7 @@
 * [Contributing](#contributing)
 * [Prerequisites](#prerequisites)
 * [Installation](#installation)
+* [Folder Structure](#folder structure)
 * [API](#api)
 
 
@@ -72,8 +73,6 @@ npm install
 3. Setup database
 
 
-### API
-
 ### Folder Structure
 
 ```javascript
@@ -100,6 +99,8 @@ app.ts
 
 
 ```
+
+### API
 
 
 
