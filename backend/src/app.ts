@@ -5,6 +5,7 @@ import compression from 'compression';
 import helmet from 'helmet';
 import swaggerUi from 'swagger-ui-express';
 import { RegisterRoutes } from '../build/routes';
+import { errorHandler, notFoundHandler } from './middleware.app';
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
