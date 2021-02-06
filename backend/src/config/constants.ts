@@ -7,4 +7,9 @@ export default {
     notFound: { statusCode: 404, name: 'Not Found', message: 'content not found' },
     entity: { statusCode: 422, name: 'Unprocessable Entity', message: 'entity error' },
   },
+  errorValidator: {
+    isString: { errorMsg: 'Not a string!' },
+    maxLength: { errorMsg: 'Password should be at least 6 chars long', value: 6 },
+    minLength: { errorMsg: 'Password must be at least 5 chars long', value: 5 },
+  },
 };

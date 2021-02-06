@@ -9,18 +9,22 @@ import {
   Security,
   Response,
 } from 'tsoa';
-import { Method } from '../services/authService/userService';
+import { UserService } from '../services/authService/userService';
 import { Auth } from '../enums/collection.enum';
 import { UserParams, ReqUser, Options } from './interface.Controller';
+
+const { findOne, showUser } = UserService;
 
 @Route('users')
 export class UsersController extends Controller {
   @Response(400, 'Bad request')
+  @SuccessResponse(201, 'User Created')
   @Post()
   public async loginUser(@Body() requestBody: UserParams): Promise<void> {
+    this.setStatus(201);
     const { email, password } = requestBody;
     const doc: UserParams = { email, password };
-    return await Method.findOne(doc);
+    return await findOne(doc);
   }
   @Response(400, 'Bad request')
   @SuccessResponse(200)
@@ -30,6 +34,6 @@ export class UsersController extends Controller {
     this.setStatus(200);
     const id: ReqUser = request.user;
     const options: Options = { projection: { _id: 0, password: 0 } };
-    return await Method.showUser(id, options);
+    return await showUser(id, options);
   }
 }
