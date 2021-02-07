@@ -1,9 +1,15 @@
-export class User {
-  public email: string;
-  public password: string;
+interface UsertType {
+  email: string;
+  password: string;
+}
 
-  constructor(email: string, password: string) {
-    this.email = email;
-    this.password = password;
+class User {
+  static create({ email, password }: UsertType) {
+    return {
+      email,
+      password,
+    };
   }
 }
+
+export { User };

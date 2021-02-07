@@ -1,18 +1,17 @@
-import { Db, MongoClient } from 'mongodb';
+import { config } from 'dotenv';
+import { Db, MongoClient, MongoClientOptions } from 'mongodb';
+import { Collection } from 'typescript';
 import { Index } from '../enums/collection.enum';
-import { Logger } from '../util/winston.createLogger';
-import { dbOptionsType } from './dbOptionsType';
+import { dbOptionsType, ProcessEnv } from './dbOptionsType';
 
 export class Database {
-  static async connect(dbURI: string, dbOptions: dbOptionsType) {
-    const client = new MongoClient(dbURI, dbOptions);
-    try {
-      await client.connect();
-      const database: Db = client.db(Index.Db);
-      const collection = database.collection(Index.Users);
-      return collection;
-    } catch (e) {
-      Logger.error(`Get connection: ${e}`);
-    }
+  public static async connect(
+    dbURI: string,
+    dbOptions: MongoClientOptions | undefined
+  ): Promise<any> {
+    const client: MongoClient = new MongoClient(dbURI, dbOptions);
+    await client.connect();
+    const collection = client.db(Index.Db).collection(Index.Users);
+    return { collection, client };
   }
 }

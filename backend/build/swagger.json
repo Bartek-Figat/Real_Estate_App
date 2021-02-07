@@ -44,7 +44,7 @@
 	},
 	"openapi": "3.0.0",
 	"paths": {
-		"/users": {
+		"/users/login": {
 			"post": {
 				"operationId": "LoginUser",
 				"responses": {
@@ -69,7 +69,7 @@
 				}
 			}
 		},
-		"/users/UserInfo": {
+		"/users/user-info": {
 			"get": {
 				"operationId": "UserInfo",
 				"responses": {
@@ -91,6 +91,28 @@
 					}
 				],
 				"parameters": []
+			}
+		},
+		"/auth/register": {
+			"post": {
+				"operationId": "CreateUser",
+				"responses": {
+					"201": {
+						"description": "Created"
+					}
+				},
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UserParams"
+							}
+						}
+					}
+				}
 			}
 		}
 	},
