@@ -1,24 +1,16 @@
-require('dotenv').config();
-const { MongoClient } = require('mongodb');
-import logger from '../util/winston.createLogger';
-import { dbOptionsType, ProcessEnv } from './dbOptionsType';
+import {  MongoClient, MongoClientOptions } from 'mongodb';
 
-const { dbURI } = process.env as ProcessEnv;
+import { Index } from '../enums/collection.enum';
 
-const dbOptions: dbOptionsType = {
-  useUnifiedTopology: true,
-  useNewdbURIParser: true,
-  useNewUrlParser: true,
-};
 
-const client: any = new MongoClient(dbURI, dbOptions);
-
-export = async (): Promise<void> => {
-  try {
+export class Database {
+  public static async connect(
+    dbURI: string,
+    dbOptions: MongoClientOptions | undefined
+  ): Promise<any> {
+    const client: MongoClient = new MongoClient(dbURI, dbOptions);
     await client.connect();
-    await client.db('admin').command({ ping: 1 });
-    logger.info(`DB connection`, { message: `Connected successfully to Client DB` });
-  } finally {
-    await client.close();
+    const collection = client.db(Index.Db).collection(Index.Users);
+    return { collection, client };
   }
-};
+}

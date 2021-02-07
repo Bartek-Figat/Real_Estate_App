@@ -4,10 +4,11 @@ import rateLimit from 'express-rate-limit';
 import compression from 'compression';
 import helmet from 'helmet';
 import swaggerUi from 'swagger-ui-express';
+import { RegisterRoutes } from '../build/routes';
 
 const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100, // limit each IP to 100 requests per windowMs
+  windowMs: 15 * 60 * 1000,
+  max: 100,
 });
 
 const initialize = () => {
@@ -17,8 +18,12 @@ const initialize = () => {
   app.use(compression());
   app.use(cors());
   app.use(helmet());
+  app.use('/docs', swaggerUi.serve, async (_req: ExRequest, res: ExResponse) => {
+    return res.send(swaggerUi.generateHTML(await import('../build/swagger.json')));
+  });
   app.use(limiter);
   app.enable('trust proxy');
+  RegisterRoutes(app);
   return app;
 };
 

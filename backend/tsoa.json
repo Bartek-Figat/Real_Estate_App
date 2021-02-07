@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
     "entryFile": "src/server.ts",
     "noImplicitAdditionalProperties": "throw-on-extras",
     "controllerPathGlobs": ["src/**/*Controller.ts"],
@@ -10,3 +11,24 @@
       "routesDir": "build"
     }
   }
+=======
+  "entryFile": "src/server.ts",
+  "noImplicitAdditionalProperties": "throw-on-extras",
+  "controllerPathGlobs": ["src/**/*Controller.ts"],
+  "spec": {
+    "outputDirectory": "build",
+    "specVersion": 3,
+    "securityDefinitions": {
+      "api_key": {
+        "type": "apiKey",
+        "name": "authorization",
+        "in": "headers"
+      }
+    }
+  },
+  "routes": {
+    "routesDir": "build",
+    "authenticationModule": "./src/authentication/authentication.ts"
+  }
+}
+>>>>>>> logowanie

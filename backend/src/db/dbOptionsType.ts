@@ -1,6 +1,5 @@
 export interface dbOptionsType {
   useUnifiedTopology: boolean;
-  useNewdbURIParser: boolean;
   useNewUrlParser: boolean;
 }
 
