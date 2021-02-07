@@ -1,19 +1,6 @@
 {
   "compilerOptions": {
     "target": "es5",
-<<<<<<< HEAD
-    "module": "commonjs",
-    "rootDir": "./",
-    "strict": true,
-    "sourceMap": true,
-    "experimentalDecorators": true,
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "noImplicitAny": true,
-    "alwaysStrict": true,
-    "forceConsistentCasingInFileNames": true,
-=======
       "module": "commonjs",
       "rootDir": "./",
       "strict": true,
@@ -34,5 +21,4 @@
     "node_modules"
   ],
   "files": ["index.d.ts"]
->>>>>>> logowanie
-  }
+}

@@ -1,17 +1,4 @@
 {
-<<<<<<< HEAD
-    "entryFile": "src/server.ts",
-    "noImplicitAdditionalProperties": "throw-on-extras",
-    "controllerPathGlobs": ["src/**/*Controller.ts"],
-    "spec": {
-      "outputDirectory": "build",
-      "specVersion": 3
-    },
-    "routes": {
-      "routesDir": "build"
-    }
-  }
-=======
   "entryFile": "src/server.ts",
   "noImplicitAdditionalProperties": "throw-on-extras",
   "controllerPathGlobs": ["src/**/*Controller.ts"],
@@ -31,4 +18,3 @@
     "authenticationModule": "./src/authentication/authentication.ts"
   }
 }
->>>>>>> logowanie
