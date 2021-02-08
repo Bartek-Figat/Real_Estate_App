@@ -4,7 +4,6 @@ import { Database } from '../db/db.client';
 import { dbOptionsType, ProcessEnv } from '../db/dbOptionsType';
 import { ApiError } from '../error/ErrorHandler';
 import { User } from '../models/user';
-import { Logger } from '../util/winston.createLogger';
 
 config();
 const { dbURI } = process.env as ProcessEnv;
@@ -21,7 +20,7 @@ export class UserRepository {
     try {
       return await collection.findOne(user);
     } catch (e) {
-      console.log(e);
+      throw new ApiError(constants.errorTypes.db);
     } finally {
       await client.close();
     }
@@ -32,7 +31,7 @@ export class UserRepository {
     try {
       return await collection.insertOne(user);
     } catch (e) {
-      console.log(e);
+      throw new ApiError(constants.errorTypes.db);
     } finally {
       await client.close();
     }

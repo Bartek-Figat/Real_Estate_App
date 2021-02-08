@@ -8,12 +8,14 @@ import {
   Request,
   Security,
   Response,
+  ValidateError,
 } from 'tsoa';
 
 import { Auth } from '../enums/collection.enum';
 import { UserParams, ReqUser } from './interface.Controller';
 import { UserService } from '../services/userService';
 import { ResponseMessage } from '../enums/responseMessage.enum';
+import { stringify } from 'querystring';
 
 const service = new UserService();
 
@@ -25,6 +27,7 @@ export class UsersController extends Controller {
   public async loginUser(@Body() requestBody: UserParams): Promise<void> {
     this.setStatus(201);
     const { email, password } = requestBody;
+
     const doc: UserParams = { email, password };
 
     return await service.createToken(doc);

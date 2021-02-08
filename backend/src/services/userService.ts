@@ -1,6 +1,9 @@
 import { config } from 'dotenv';
 import { compare, genSalt, hash } from 'bcrypt';
 import { sign } from 'jsonwebtoken';
+import isEmail from 'validator/lib/isEmail';
+import isLength from 'validator/lib/isLength';
+import isMongoId from 'validator/lib/isMongoId';
 import { ObjectID } from 'mongodb';
 import constants from '../config/constants';
 import { ApiError } from '../error/ErrorHandler';
@@ -16,11 +19,10 @@ export class UserService {
 
   public async createUser(doc: any): Promise<any> {
     const { email, password } = doc;
+    if (!isEmail(email) || !isLength(password, { min: 6, max: undefined })) return;
 
     const existingUser: any = await this.userRepository.findOne({ email });
-    if (existingUser) {
-      return;
-    }
+    if (existingUser) return;
 
     const salt = await genSalt(10);
     const hashPassword = await hash(password, salt);
@@ -30,6 +32,7 @@ export class UserService {
 
   public async createToken(doc: any): Promise<any> {
     const { email, password } = doc;
+    if (!isEmail(email) || !isLength(password, { min: 6, max: undefined })) return;
     const document: any = await this.userRepository.findOne({ email });
     const match = document && (await compare(password, document.password));
     if (!match) throw new ApiError(constants.errorTypes.notFound);
@@ -48,6 +51,7 @@ export class UserService {
 
   public async showUser(doc: any): Promise<any> {
     const userID: ObjectID = new ObjectID(doc);
+    isMongoId(`${userID}`);
     const document: any = await this.userRepository.findOne({ _id: userID });
     if (!document) throw new ApiError(constants.errorTypes.notFound);
     return await document;
