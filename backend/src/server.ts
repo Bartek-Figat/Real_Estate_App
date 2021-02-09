@@ -1,8 +1,8 @@
 import initialize from './app';
 import logger from './util/winston.createLogger';
-import db from '../src/db/db.client';
+import { mongoConnect } from '../src/db/db.client';
 
-db();
+mongoConnect();
 const port = process.env.PORT || 8000;
 
 initialize().listen(port, () =>

@@ -27,6 +27,6 @@ import {ResponseMessage} from '../enums/responseMessage.enum'
 export class PropertyController extends Controller {
     @Post('/add-property')
     public async createProperty(@Body() requestBody: PropertyCreationParams):Promise<void> {
-        console.log('working')
+        new PropertyService().createProperty(requestBody)
     }
 }

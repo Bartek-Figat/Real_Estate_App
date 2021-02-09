@@ -1,8 +1,9 @@
-require('dotenv').config();
-const { MongoClient } = require('mongodb');
+import { config } from 'dotenv'
+import { Db, MongoClient } from 'mongodb';
 import logger from '../util/winston.createLogger';
 import { dbOptionsType, ProcessEnv } from './dbOptionsType';
 
+config()
 const { dbURI } = process.env as ProcessEnv;
 
 const dbOptions: dbOptionsType = {
@@ -11,14 +12,28 @@ const dbOptions: dbOptionsType = {
   useNewUrlParser: true,
 };
 
-const client: any = new MongoClient(dbURI, dbOptions);
+let db: Db;
+const client: MongoClient = new MongoClient(dbURI, dbOptions);
 
-export = async (): Promise<void> => {
+export const mongoConnect =  async (): Promise<void> => {
   try {
     await client.connect();
+    db = await client.db('test')
     await client.db('admin').command({ ping: 1 });
     logger.info(`DB connection`, { message: `Connected successfully to Client DB` });
+
+  } catch(e) {
+    throw new Error('connection failed')
   } finally {
-    await client.close();
+    // client.close()
   }
 };
+
+
+export const getDb = (): Db => {
+  if (db) {
+    return db
+  }
+
+  throw new Error('No database found')
+}

@@ -4,6 +4,7 @@ import rateLimit from 'express-rate-limit';
 import compression from 'compression';
 import helmet from 'helmet';
 import swaggerUi from 'swagger-ui-express';
+import { RegisterRoutes } from '../build/routes';
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
@@ -25,7 +26,7 @@ const initialize = () => {
       swaggerUi.generateHTML(await import('../build/swagger.json'))
     )
   })
-  
+  RegisterRoutes(app)
   return app;
 };
 
